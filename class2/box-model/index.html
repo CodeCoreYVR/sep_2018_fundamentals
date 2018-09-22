@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Box Model</title>
+    <style>
+      /*
+      We can target elements using
+      the html tag itself
+      */
+      div {
+        background-color: aqua;
+      }
+
+      /*
+      we can target an element using
+      the element's ID
+      */
+      #title {
+        font-size: 60px;
+      }
+
+      #box-model-second-container,
+      #box-model-container {
+        border: 1px solid rgb(79, 79, 79);
+      }
+
+      /*
+      we can target elements using their
+      class name.
+
+      The difference between these 2 is as follows:
+
+      this will select all the elements that have
+      a class set to "box-model-sample" which happens
+      to be a direct child of the element that has
+      the id of "box-model-second-container"
+      #box-model-second-container > .box-model-sample,
+
+      The second selects all the elements that contain
+      the class "box-model-sample" within an element
+      that has the id set to "box-model-container"
+      regardless of its parent/child structure.
+
+      */
+      #box-model-second-container > .box-model-sample,
+      #box-model-container .box-model-sample {
+        background-color: #F5F2DC !important;
+        margin: 10px 10px 10px 10px;
+        padding: 10px;
+      }
+
+    </style>
+  
+  </head>
+  <body>
+    <h1 id="title">Box model</h1>
+    
+    <div id="box-model-container">
+        <div class="box-model-sample">Box 0</div>
+        <div>
+            <div class="box-model-sample" style="background-color: red">Box 1</div>
+            <div class="box-model-sample">Box 2</div>
+            <div class="box-model-sample">Box 3</div>
+        </div>
+    </div>
+    <br />
+    <div id="box-model-second-container">
+        <div class="box-model-sample" style="background-color: red">Box 1</div>
+        <div class="box-model-sample">Box 3</div>
+        <div class="box-model-sample">Box 2</div>
+    </div>
+
+  </body>
+</html>
