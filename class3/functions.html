@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My first Dynamic page</title>
+    <script>      
+
+      // this is wrong
+      //var function sayHello(name) {
+      //  console.log(`Hello there ${name}`);
+      //}
+      // this is how i define a function
+      var sayHello = function (name) {
+        console.log(`Hello there ${name}`);
+      }
+      // this is how i use the function
+      sayHello('Arturo');
+      sayHello('Derek'); // this will replace (name) with ('derek')
+      sayHello();
+
+      const sayHello2 = function (firstName, lastName) {
+        console.log(`Hello there`);
+        console.log(`How are you ${firstName} ${lastName}`);
+      }
+      // this is how i use the function
+      sayHello2('Jesus', "Rodriguez");
+      // make sure that you are placing the
+      // variables in the order they are
+      // declared in the function signature
+      sayHello2 ("Rodriguez", 'Jesus');
+    </script>
+  </head>
+  <body>
+  </body>
+</html>
+
