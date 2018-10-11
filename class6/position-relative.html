@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Display Block : CSS</title>
+    <style>
+      #parent {
+        background-color: blue;
+      }
+      .item {
+        position: relative;
+        margin: 10px;
+        padding: 10px;
+        top: 30px;
+        right: 25px;
+      }
+      .green {
+        background-color: green;
+        color: white;
+      }
+      .red {
+        background-color: red;
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+      <h3>Sample of position property set to relative</h3>
+      <ul>
+        <li>
+          Its position is relative to its
+          immediate ancestor.
+        </li>
+        <li>
+          DOES obey left, top right, and bottom
+          rules.
+        </li>
+      </ul>
+    <div id="parent">
+      <div class="item green">Box 1</div>
+      <div class="item red">Box 2</div>
+    </div>
+  </body>
+</html>

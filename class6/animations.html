@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Animations : CSS</title>
+    <style>
+      @keyframes switchColor {
+        from {
+          background-color: red;
+          color: white;
+          padding: 10px;
+        }
+        to {
+          background-color: #333;
+          color: white;
+          padding: 10px;
+        }
+      }
+
+      #animation-sample {
+        background-color: red;
+        color: white;
+        padding: 10px;
+        animation-name: switchColor;
+        animation-duration: 2s;
+        animation-iteration-count: infinite;
+      }
+    </style>
+  </head>
+  <body>
+    <h3>Sample of Animations</h3>
+    <div id="animation-sample">
+      This is the greatest container
+      that there was.
+    </div>
+  </body>
+</html>

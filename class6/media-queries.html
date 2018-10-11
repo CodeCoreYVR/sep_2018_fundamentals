@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Media Query : CSS</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+      .media-query-sample {
+        background-color: #333;
+        color: white;
+        padding: 10px;
+      }
+
+      @media ( max-width: 600px ) {
+        .media-query-sample {
+          background-color: goldenrod;
+          color: white;
+        }
+      }
+
+      @media ( max-width: 300px ) {
+        .media-query-sample {
+          background-color: azure;
+          color: black;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <h3>Sample of Media query</h3>
+    <div class="media-query-sample">
+      This is the greatest container
+      that there was.
+    </div>
+  </body>
+</html>
