@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>JQuery Demo</title>
+    <style>
+        /*
+        we use the hash along with the id value
+        to target an html compoent in css.
+        */
+        #test,
+        #my-first-link {
+          color: red;
+        }
+        .sample-button:first-of-type {
+          background-color: #333333;
+          color: white;
+        }
+
+        h1 {
+          color: green;
+        }
+    </style>
+    <script
+  src="https://code.jquery.com/jquery-3.3.1.js"
+  integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+  crossorigin="anonymous"></script>
+    <script>
+        /*
+        // this wonevent listener won't get added
+        // to the my-first-link item because the
+        // html element (or html node) doesn't
+        // exist at this point in time.
+        $('#my-first-link').on('click', function() {
+          console.log('Hello console world');
+          alert('Hello human world');
+        });
+        */
+        
+        $(document).ready(function(){
+          console.log('this page has been loaded!');
+          // alert('this page has been loaded!');
+
+          /*
+          we use the hash along with the id value
+          to target an html compoent in js with jquery.
+          */
+          $('#my-first-link').on('click', function() {
+            console.log('Hello console world from the headerZ');
+            //alert('Hello human world from the header');
+          });
+
+          $('.sample-button:first-of-type').on('click', function(){
+            console.log('You just clicked the .sample-button:first-of-type');
+          })
+
+          // func( string ) -> this is a jquery selector
+
+          // syntax
+          // func( string ) // -> will retrieve an object
+          // func( string ).on( string, function );
+          $('h1').on('mouseover', function(){
+            console.log('mouse is over H1');
+            $(this).css('background-color', 'yellow');
+            // is the same as doing $('h1')
+          });
+
+          // select multiple html nodes and count them
+          console.log($('#link1, #link2').length);
+
+        });
+      </script>
+  </head>
+  <body>
+
+    <h1>This is a sample of jquery basics</h1>
+
+    <a id="my-first-link">My first link</a>
+    <hr />
+    
+    <div>
+      <button class="sample-button">Button 1</button>
+      <button class="sample-button">Button 2</button>
+      <button class="sample-button">Button 3</button>
+      <button class="sample-button">Button 4</button>
+    </div>
+
+    <hr />
+
+    <a id="link1">Link 1</a>
+    <a id="link2">Lin 2</a>
+    <!-- You can place your javasacript files here too -->
+  <script>
+    // this event listener will get added to the my-first-link
+    // html node because at the time of execution. the html node
+    // is available and rendered
+    $('#my-first-link').on('click', function() {
+      console.log('Hello console world');
+      //alert('Hello human world');
+    });
+  </script>
+  </body>
+</html>
