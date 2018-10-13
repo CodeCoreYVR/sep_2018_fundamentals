@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      table {
+        border: 1px solid #333;
+        padding: 4px;
+      }
+
+      table > thead > tr > th {
+        border: 1px solid #333;
+        padding: 4px 10px;
+      }
+
+      table td {
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Sample of highlighting a table row</h1>
+
+    <table>
+
+      <thead>
+        <tr>
+          <th>
+            Programming Languages
+          </th>
+          <th>
+            Rating
+          </th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr>
+          <td>Python</td>
+          <td>5 / 5</td>
+        </tr>
+        <tr>
+          <td>Javascript</td>
+          <td>5 / 5</td>
+        </tr>
+        <tr>
+          <td>Ruby</td>
+          <td>3 / 5</td>
+        </tr>
+      </tbody>
+
+    </table>
+
+    <script
+  src="https://code.jquery.com/jquery-3.3.1.js"
+  integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+  crossorigin="anonymous"></script>
+  <script>
+    $(document).ready(function() {
+
+      $('table > tbody > tr').on('mouseenter', function(){
+        $(this)
+          .css('background-color', '#333')
+          .css('color', 'white');
+      });
+
+      $('table > tbody > tr').on('mouseleave', function(){
+        $(this)
+          .css('background-color', 'white')
+          .css('color', 'black');
+      });
+
+    });
+  </script>
+  </body>
+</html>
