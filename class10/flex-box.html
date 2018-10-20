@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Trying Flex box out</title>
+    <style>
+
+      .row {
+        background-color: #F0F0DF;
+        border: 1px solid #FF8F00;
+        padding: 10px;
+        margin: 10px;
+      }
+
+      .container {
+        display: flex;
+      }
+
+      #column-container {
+        flex-direction: column;
+      }
+
+      #reversed-column-container {
+        flex-direction: column-reverse;
+      }
+
+      #centered-container {
+        justify-content: center;
+      }
+
+      #streched-container {
+        align-items: stretch;
+        flex-direction: row;
+      }
+      #streched-container .row {
+        flex-grow: 1;
+      }
+
+    </style>
+  </head>
+  <body>
+    <h1>Sample of flex table with columns</h1>
+    <div id="column-container" class="container">
+
+      <div class="row">Flex Item 1</div>
+      <div class="row">Flex Item 2</div>
+      <div class="row">Flex Item 3</div>
+
+    </div>
+    <h1>Sample of flex table with reversed columns</h1>
+    <div id="reversed-column-container" class="container">
+
+      <div class="row">Flex Item 1</div>
+      <div class="row">Flex Item 2</div>
+      <div class="row">Flex Item 3</div>
+
+    </div>
+    <h1>Sample of flex centered</h1>
+    <div id="centered-container" class="container">
+
+      <div class="row">Flex Item 1</div>
+      <div class="row">Flex Item 2</div>
+      <div class="row">Flex Item 3</div>
+
+    </div>
+    <h1>Sample of streched flex item</h1>
+    <div id="streched-container" class="container">
+
+      <div class="row">Flex Item 1</div>
+      <div class="row">Flex Item 2</div>
+      <div class="row">Flex Item 3</div>
+
+    </div>
+  </body>
+</html>
