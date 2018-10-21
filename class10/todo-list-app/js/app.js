@@ -16,10 +16,12 @@ $(document).ready(() => {
   const button = $('#add-task-button');
   const input = $('#add-task-input');
   const tbody = $('#task-list-table tbody');
+  const completeTemplate = '<span class="text-success">Complete</span>';
+  const incompleteTemplate = '<span class="text-warning">Incomplete</span>';
   const rowTemplate = `<tr id="{id}">
-  <td scope="row">{task}</td>
+  <td scope="row">{task} ({complete})</td>
   <td>
-    <a class="complete">Complete</a> |
+    <a class="complete">{markAsCompleteText}</a> |
     <a class="delete">Delete</a>
   </td>
 </tr>`;
@@ -37,11 +39,13 @@ $(document).ready(() => {
    * one is the id of the row which must be unique,
    * and the other is the task that need to be taken care of.
    */
-  const addTableRow = (id, task) => {
+  const addTableRow = (id, task, complete) => {
     console.log('adding new row');
     const rowContent = rowTemplate
       .replace('{task}', task)
-      .replace('{id}', id);
+      .replace('{id}', id)
+      .replace('{complete}', complete ? completeTemplate : incompleteTemplate)
+      .replace('{markAsCompleteText}', complete ? 'Mark as incomplete' : 'Mark as complete');
     tbody.append(rowContent);
 
     console.log('cleaning input');
@@ -59,9 +63,9 @@ $(document).ready(() => {
   taskRef.on('child_added', (record) => {
     const data = record.val(); // this will extract the task information
     const id = record.key;
-    console.log('new item has been added',record.key, record.val());
+    console.log('new item has been added', record.val());
     // this will call the function that adds a table row.
-    addTableRow( id, data.task );
+    addTableRow( id, data.task, data.complete );
   });
 
   /**
@@ -72,6 +76,15 @@ $(document).ready(() => {
   taskRef.on('child_removed', (record) => {
     console.log('child has been removed', record.key);
     $(`#${record.key}`).remove();
+  })
+
+  taskRef.on('child_changed', (record) => {
+    const id = record.key;
+    const data = record.val();
+    console.log('child has been updated', record.key);
+
+    $(`#${id} td:nth(0)`).html(`${data.task} ${data.complete ? completeTemplate : incompleteTemplate}`);
+    $(`#${id} a.complete`).html( data.complete ? 'Mark as Incomplete' : 'Mark as Complete' );
   })
 
   /**
@@ -114,6 +127,18 @@ $(document).ready(() => {
     const id = $(this).closest('tr').attr('id');
     console.log(`the id i found is ${id}`);
     taskRef.child(id).remove();
+  });
+
+  $(document).on('click', '#task-list-table tbody a.complete', function() {
+    const id = $(this).closest('tr').attr('id');
+    console.log(`the id i found is ${id}`);
+    firebase.database().ref('/tasks/' + id).once('value').then((record) => {
+      console.log(record.val())
+      taskRef.child(id).update({
+        complete: !record.val().complete
+      });
+    })
+    // taskRef.child(id).update({});
   });
 
 });
