@@ -132,7 +132,7 @@ $(document).ready(() => {
   $(document).on('click', '#task-list-table tbody a.complete', function() {
     const id = $(this).closest('tr').attr('id');
     console.log(`the id i found is ${id}`);
-    firebase.database().ref('/tasks/' + id).once('value').then((record) => {
+    firebase.database().ref('tasks/' + id).once('value').then((record) => {
       console.log(record.val())
       taskRef.child(id).update({
         complete: !record.val().complete
